@@ -20,7 +20,7 @@ paths:
                 $ref: "#/components/schemas/Hello"
 components:
   schemas:
-    Hello:
+    HelloRepresentation:
       required:
         - text
       properties:
