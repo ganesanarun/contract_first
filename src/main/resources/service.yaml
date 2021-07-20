@@ -18,11 +18,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HelloRepresentation"
+  /customers:
+    post:
+      summary: Create a new customer
+      operationId: createCustomer
+      tags:
+        - customer
+      requestBody:
+        $ref: "#/components/requestBodies/CustomerDraft"
+      responses:
+        '200':
+          description: Hello World
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerRepresentation"
 components:
+  requestBodies:
+    CustomerDraft:
+      description: Customer object
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CustomerDraft"
+
   schemas:
     HelloRepresentation:
       required:
         - text
       properties:
         text:
+          type: string
+    CustomerRepresentation:
+      required:
+        - name
+        - id
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+          format: uuid
+    CustomerDraft:
+      required:
+        - name
+      properties:
+        name:
           type: string
